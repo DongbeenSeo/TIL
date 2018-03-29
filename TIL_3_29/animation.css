@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+/* transition animation */
+
+.box {
+    background-color: yellow;
+    border: 5px solid black;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 2000ms;
+    transition-duration: 5s;
+}
+
+.box:hover {
+    border-radius: 50% 0 50% 0;
+    transform: translate3d(100px, 100px, 0) skewX(45deg);
+}
+
+
+/* css3 애니메이션 규칙 */
+
+@keyframes text-ani {
+    from {
+        font-size: 20px;
+        transform: translate(0, 0);
+    }
+    to {
+        font-size: 40px;
+        transform: translate(500px, 150px);
+    }
+    /* from to 대신에 0% 100% 사용가능 */
+}
+
+.text {
+    width: 800px;
+    margin: 50px auto;
+    height: 300px;
+    border: 2px solid black;
+    background-color: pink;
+}
+
+.inner {
+    animation-name: text-ani;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    /* direction: alternate - 자연스럽게 초기화면으로 돌아간다. */
+    animation-timing-function: ease-in-out;
+    background-color: aqua;
+    display: inline-block;
+}
+
+.inner:hover {
+    animation-play-state: paused;
+}

@@ -1,0 +1,479 @@
+@charset "utf-8";
+@import url("./normalize.css");
+@import url("./fonts.css");
+
+/* 기본 초기화 style */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* 숨김 content */
+
+
+/* .clearfix::after {
+    content: "";
+    background-color: yellow;
+    clear: both;
+    display: block;
+} */
+
+
+/* readable-hidden이라고 할때도 있다. */
+
+legend,
+.a11y-hidden {
+    display: none;
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+}
+
+
+/* 기본 스타일 */
+
+html {
+    font-size: 10px;
+    /* 기본size는 16px */
+}
+
+body {
+    background-color: #fff;
+    color: #181818;
+    font-size: 1.4rem;
+    /* 1em : 상속받은 글자크기 */
+    font-family: 'Noto Sans Regular', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* grid toggle button */
+
+.btn-grid {
+    position: fixed;
+    top: 2em;
+    right: 2em;
+    background: #000;
+    color: white;
+    padding: 1em;
+}
+
+
+/* 컨테이너 */
+
+.container {
+    /* background: gray; */
+    /* height: 100vh; */
+    position: relative;
+}
+
+.is-act::before {
+    content: "";
+    position: absolute;
+    /* background-color: blue; */
+    width: 1000px;
+    height: 100%;
+    z-index: 100;
+    /* top: 0; */
+    left: 50%;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(90deg, hsla(70, 90%, 60%, 0.4) 0px, hsla(70, 90%, 60%, 0.4) 65px, transparent 65px, transparent 85px);
+}
+
+
+/* 레이아웃 공통 */
+
+.header,
+.main,
+.slogan {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+
+/* 헤더 */
+
+.header {
+    background-color: #fff;
+    /* padding: 0 0 10px 0; */
+    position: relative;
+    display: -ms-grid;
+    /* prefix code가 먼저 나오게 */
+    display: grid;
+    -ms-grid-columns: 30% 70%;
+    -ms-grid-rows: 50px 50px;
+    grid-template-columns: repeat(12, 65px);
+    grid-template-rows: 50px 50px;
+    grid-column-gap: 20px;
+}
+
+
+/* header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: repeating-linear-gradient(to right, rgba(255, 0, 0, 0.2) 0px, rgba(255, 0, 0, 0.2) 65px, transparent 65px, transparent 85px);
+    width: 100%;
+    height: 100%;
+} */
+
+
+/* 로고 */
+
+.logo {
+    /* background-color: orange; */
+    margin: 0;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 3;
+    grid-column: 1/ span 3;
+    grid-row: 1/ span 2;
+    /* position: absolute;
+    top: 50%;
+    left: 50px; */
+    /* margin-top: ?; 배치하고자 하는 이미지 높이의 절반크기만큼*/
+    /* transform: translateY(-50%); */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo * {
+    display: block;
+    line-height: 1;
+}
+
+
+/* 멤버 링크 */
+
+.member {
+    /* background-color: tan; */
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    grid-column: 10/ span 3;
+    grid-row: 1/ 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.member li::before {
+    /* content: "|"; */
+}
+
+.member li:first-child::after {
+    content: "";
+}
+
+.member a {}
+
+
+/* 검색 폼 */
+
+.search {
+    /* background-color: skyblue; */
+    /* padding-top: 10px; */
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 3;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 3;
+    grid-column: 7/ span 6;
+    grid-row: 2/3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.search fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+input[type="search"] {
+    height: 30px;
+    width: 420px;
+    padding: 2px 2px 2px 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.btn-search {
+    height: 30px;
+    width: 60px;
+    padding: 5px;
+    color: white;
+    border: 1px solid gray;
+    background-color: #988574;
+    border-radius: 2.5px;
+}
+
+
+/* 내비게이션 */
+
+.navigation {
+    /* basic setting */
+    padding-top: 0.5em;
+    background-color: #988574;
+    border-top: 2px solid #181818;
+    border-bottom: 2px solid #181818;
+}
+
+.menu {
+    /* background-color: blueviolet; */
+    width: 1000px;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6rem;
+}
+
+.menu span {
+    display: block;
+    /* span은 inline이므로 padding을 안먹는다. */
+    cursor: pointer;
+    font-size: 1.8rem;
+    /* 10px을 상속받고 (*1.8) */
+    padding: 0.5em 0em;
+    /* background: green; */
+    font-family: 'Noto Sans Bold, sans-serif';
+    /* text-shadow: 0px 2px 0px #f00, 2px 0px 0px blue, 0px -2px 0px green, -2px 0px 0px pink; */
+    /* x축 y축 blur color */
+    /* animation 시작점 */
+    /* transition-property: color, font-size; */
+    /* 변환 요소 */
+    /* transition-duration: 2s; */
+    /* 실행시간 */
+    /* transition-delay: 0s, 5s; */
+    /* 시간을 다르게 줘서 다른 animation인 것 처럼 */
+    /* transition-timing-function: cubic-bezier(.3, -0.42, .83, .67); */
+    transition: all 0.5s 0s ease;
+}
+
+.menu span:hover,
+.menu li:focus span {
+    color: orange;
+    /* border-bottom: 2px solid orange; */
+}
+
+.sub-menu {
+    /* background-color: orangered; */
+    margin-top: 0.5em
+}
+
+.sub-menu li {
+    margin: 0.5em 0 0.5em 1em;
+}
+
+.sub-menu a {
+    /* background-color: teal; */
+    display: block;
+    padding: 0.5em 0;
+}
+
+
+/* 메인 콘텐츠 */
+
+.main {
+    /* background-color: pink; */
+    display: -ms-grid;
+    -ms-grid-columns: 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px 20px 65px;
+    -ms-grid-rows: 30vh 30vh;
+    /* morden browser */
+    display: grid;
+    grid-template-columns: repeat(12, 65px);
+    grid-template-rows: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-template-areas: "rb rb rb rb ne ne ne ne ne ne ne ne" "bd bd bd bd tw tw tw tw tw fs fs fs";
+}
+
+
+/* 메인 콘텐츠 섹션 제목 공통 */
+
+.main-section-heading {
+    padding: 5px 0 0 65px;
+    background: url("../css/images/sprite_main.png") no-repeat;
+    margin: 1em 0;
+    min-height: 60px;
+    font-size: 1.3em;
+}
+
+.en-heading {
+    display: block;
+    margin-top: 5px;
+}
+
+
+/* 메인 컨텐츠 단락 공통 */
+
+.main [class$="-summary"] {
+    line-height: 1.5em;
+    margin: 1em 0;
+    font-size: 1.1em;
+}
+
+
+/* .rb-summary,
+.news-summary {
+    line-height: 1.5em;
+    margin: 1em 0;
+    font-size: 16px;
+} */
+
+
+/* 추천서적 */
+
+.recommend-book {
+    /* background-color: teal; */
+    grid-area: rb;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 8;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+}
+
+
+/* 추천서적제목 */
+
+.rb-heading .en-heading {
+    color: #abd375;
+}
+
+
+/* 추천서적 커버이미지 */
+
+.rb-cover {
+    /* background-color: pink; */
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.rb-cover img {
+    max-width: 100%;
+    /* 반응형 웹을 위한 속성 */
+}
+
+
+/* 추천서적 저자 및 평점 */
+
+.rb-detail {
+    text-align: center;
+    margin: 1em 0;
+}
+
+.rb-author,
+.rb-author-name {
+    /* background-color: orange; */
+    display: inline-block;
+}
+
+.rb-grade {
+    color: #abd375;
+    font-size: 1.5em;
+}
+
+
+/* 추천서적 요약 */
+
+
+/* 새소식 */
+
+.news {
+    /* background-color: tan; */
+    grid-area: ne;
+    -ms-grid-column: 9;
+    -ms-grid-column-span: 24;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+}
+
+
+/* 새소식 제목 */
+
+.news-heading {
+    background-position: 0 -230px;
+}
+
+.news-heading .en-heading {
+    color: #e8ca58;
+}
+
+.news-video {
+    max-width: 100%;
+    height: auto;
+}
+
+.news-container {
+    margin: 1em 0;
+}
+
+.news-date {
+    display: block;
+    text-align: right;
+}
+
+.board {
+    background-color: skyblue;
+    grid-area: bd;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 8;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 3;
+}
+
+.favorite-site {
+    background-color: orangered;
+    grid-area: fs;
+    -ms-grid-column: 9;
+    -ms-grid-column-span: 18;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 3;
+}
+
+.twitter {
+    /* width: 400px; */
+    background-color: purple;
+    grid-area: tw;
+    -ms-grid-column: 19;
+    -ms-grid-column-span: 24;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 3;
+}
+
+
+/* 슬로건 */
+
+.slogan {
+    background-color: silver;
+    height: 10vh;
+    clear: both;
+    margin-top: 10px;
+}
+
+
+/* 푸터 */
+
+.footer {
+    background-color: skyblue;
+    height: 10vh;
+}

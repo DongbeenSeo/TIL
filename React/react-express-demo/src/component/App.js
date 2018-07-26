@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Contact from "./Contact";
 
 export default class App extends Component {
   constructor(props) {
@@ -9,19 +10,9 @@ export default class App extends Component {
   }
   render() {
     return (
-      <div>
-        <button
-          onClick={() => {
-            this.setState({
-              name: "dongbeen"
-            });
-          }}
-        >
-          Click me!
-        </button>
-        <h1>React-express-demo!!!</h1>
-        <h2>{this.state.name}</h2>
-      </div>
+      <React.Fragment>
+        <Contact />
+      </React.Fragment>
     );
   }
 }

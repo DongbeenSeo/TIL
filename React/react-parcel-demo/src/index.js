@@ -2,4 +2,4 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 import App from "./App";
 
-render(<App />, document.getElementById("root"));
+module.hot.accept(render(<App />, document.getElementById("root")));

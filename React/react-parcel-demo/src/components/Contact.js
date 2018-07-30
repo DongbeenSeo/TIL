@@ -37,6 +37,23 @@ export default class Contact extends React.Component {
       }
     ]
   };
+
+  componentWillMount() {
+    if (localStorage.getItem("contactData")) {
+      this.setState({
+        contactData: JSON.parse(localStorage.getItem("contactData"))
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      JSON.stringify(prevState.contactData) !=
+      JSON.stringify(this.state.contactData)
+    ) {
+      localStorage.contactData = JSON.stringify(this.state.contactData);
+    }
+  }
   handleChange = e => {
     this.setState({
       keyword: e.target.value

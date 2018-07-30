@@ -6,55 +6,55 @@ import ContactDetail from "./ContactDetail.js";
 import ContactCreate from "./ContactCreate.js";
 
 export default class Contact extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      keyword: "",
-      selectedKey: -1,
-      contactData: [
-        {
-          name: "Abet",
-          phone: "010-0000-0001"
-        },
-        {
-          name: "Betty",
-          phone: "010-0000-0002"
-        },
-        {
-          name: "Charlie",
-          phone: "010-0000-0003"
-        },
-        {
-          name: "David",
-          phone: "010-0000-0004"
-        }
-      ]
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleCreate = this.handleCreate.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
-  }
-
-  handleChange(e) {
+  // constructor(props) {
+  //   super(props);
+  //   this.
+  //   this.handleChange = this.handleChange.bind(this);
+  //   this.handleClick = this.handleClick.bind(this);
+  //   this.handleCreate = this.handleCreate.bind(this);
+  //   this.handleRemove = this.handleRemove.bind(this);
+  //   this.handleEdit = this.handleEdit.bind(this);
+  // }
+  state = {
+    keyword: "",
+    selectedKey: -1,
+    contactData: [
+      {
+        name: "Abet",
+        phone: "010-0000-0001"
+      },
+      {
+        name: "Betty",
+        phone: "010-0000-0002"
+      },
+      {
+        name: "Charlie",
+        phone: "010-0000-0003"
+      },
+      {
+        name: "David",
+        phone: "010-0000-0004"
+      }
+    ]
+  };
+  handleChange = e => {
     this.setState({
       keyword: e.target.value
     });
-  }
-  handleClick(key) {
+  };
+  handleClick = key => {
     this.setState({
       selectedKey: key
     });
-  }
+  };
 
-  handleCreate(contact) {
+  handleCreate = contact => {
     this.setState({
       contactData: update(this.state.contactData, { $push: [contact] })
     });
-  }
+  };
 
-  handleRemove() {
+  handleRemove = () => {
     if (this.state.selectedKey < 0) {
       return;
     }
@@ -64,9 +64,9 @@ export default class Contact extends React.Component {
       }),
       selectedKey: -1
     });
-  }
+  };
 
-  handleEdit(name, phone) {
+  handleEdit = (name, phone) => {
     this.setState({
       contactData: update(this.state.contactData, {
         [this.state.selectedKey]: {
@@ -75,7 +75,7 @@ export default class Contact extends React.Component {
         }
       })
     });
-  }
+  };
   render() {
     const mapToComponents = data => {
       data.sort();

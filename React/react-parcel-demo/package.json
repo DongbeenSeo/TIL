@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "parcel build ./src/index.html",
+    "build": "parcel build ./src/index.html -d build --public-url ./",
     "start": "parcel ./src/index.html"
   },
   "keywords": [],
@@ -20,6 +20,7 @@
     "react-hot-loader": "^4.3.4"
   },
   "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "parcel-bundler": "^1.9.7"

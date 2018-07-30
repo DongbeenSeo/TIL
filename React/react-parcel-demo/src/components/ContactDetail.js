@@ -2,19 +2,20 @@ import React from "react";
 import propTypes from "prop-types";
 
 export default class ContactDetail extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isEdit: false,
-      name: "",
-      phone: ""
-    };
-    this.handleToggle = this.handleToggle.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.
+  //   this.handleToggle = this.handleToggle.bind(this);
+  //   this.handleChange = this.handleChange.bind(this);
+  //   this.handleEdit = this.handleEdit.bind(this);
+  // }
+  state = {
+    isEdit: false,
+    name: "",
+    phone: ""
+  };
 
-  handleToggle() {
+  handleToggle = () => {
     if (!this.state.isEdit) {
       this.setState({
         name: this.props.contact.name,
@@ -27,19 +28,24 @@ export default class ContactDetail extends React.Component {
       isEdit: !this.state.isEdit
     });
     console.log(this.state.isEdit);
-  }
+  };
 
-  handleChange(e) {
+  handleChange = e => {
     let nextState = {};
     nextState[e.target.name] = e.target.value;
     console.log(nextState);
     this.setState(nextState);
-  }
+  };
 
-  handleEdit() {
+  handleEdit = () => {
     this.props.onEdit(this.state.name, this.state.phone);
-  }
+  };
 
+  handleKeyPress = e => {
+    if (e.charCode === 13) {
+      this.handleToggle();
+    }
+  };
   render() {
     const details = (
       <div>
@@ -65,6 +71,7 @@ export default class ContactDetail extends React.Component {
             placeholder="phone"
             value={this.state.phone}
             onChange={this.handleChange}
+            onKeyPress={this.handleKeyPress}
           />
         </p>
       </div>

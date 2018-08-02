@@ -19,6 +19,7 @@ app.get("/", function(req, res) {
 });
 
 app.use("/user", user);
+app.use("/", express.static("public"));
 
 app.listen(3000, function() {
   console.log("Example App is listening on port 3000");
